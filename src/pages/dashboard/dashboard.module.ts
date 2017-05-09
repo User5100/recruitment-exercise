@@ -4,13 +4,13 @@ import { Dashboard } from './dashboard';
 
 @NgModule({
   declarations: [
-    Dashboard,
+    Dashboard
   ],
   imports: [
     IonicPageModule.forChild(Dashboard),
   ],
   exports: [
-    Dashboard
+    Dashboard,
   ]
 })
 export class DashboardModule {}

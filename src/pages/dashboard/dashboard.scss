@@ -1,3 +1,159 @@
 page-dashboard {
 
 }
+
+.container {
+  background-color: #FFFFFF;
+  display: grid;
+  height: 100vh;
+  grid-template-areas:
+    "date"
+    "income"
+    "occupancy";
+  grid-template-rows: 1fr 3fr 3fr;
+  grid-template-columns: 1fr;
+
+
+}
+
+/* TODO - Fix gap between chart cards on smaller devices */
+
+@media (min-width: 800px) {
+  .container {
+    background-color: #EEF3F6;
+    height: 73vh;
+    grid-template-areas:
+      "date date date"
+      "income income occupancy";
+    grid-template-rows: 1fr auto-fill;
+    grid-template-columns: 242px 242px auto;
+  }
+
+}
+
+header {
+  grid-area: date;
+  padding: 8px 14px;
+  background-color: #FFFFFF;
+}
+
+section:nth-of-type(1) {
+  margin: 16px 0px 0px 14px;
+  height: 500px;
+  grid-area: income;
+}
+
+.income {
+  background-color: #FFFFFF;
+  border: 1px solid #DEE2E5;
+  border-radius: 3px;
+  height: 340px;
+  padding-left: 16px;
+}
+
+section:nth-of-type(2) {
+  margin: 16px 0px 0px 18px;
+  grid-area: occupancy;
+  padding-right: 14px;
+}
+
+.occupancy {
+  background-color: #FFFFFF;
+  height: 340px;
+  border: 1px solid #DEE2E5;
+  border-radius: 3px;
+  padding-left: 16px;
+  padding-right: 10px;
+}
+
+.occupancy-list {
+  margin-top: -110px;
+  list-style-type: none;
+  margin-left: 40px;
+  margin-right: 55px;
+}
+
+.occupancy-list > .item {
+  padding-left: 6px;
+  padding-bottom: 6px;
+  font-size: 8px;
+  font-weight: bold;
+  font-stretch: expanded;
+  border-bottom: 1px solid #E7EBEE;
+  color: #324154;
+  margin-top: 6px;
+}
+
+.occupancy-list > .item > span {
+  float: right;
+  font-size: 8px;
+  font-weight: bold;
+  margin-top: 1px;
+  color: #324154;
+}
+
+.occupancy-list > .item > h5 {
+  font-size: 8px;
+  color: #8C929E;
+  margin-top: 3px;
+  margin-bottom: 0;
+}
+
+.occupancy-list > .item:last-child {
+  border-bottom: none;
+}
+
+.donut {
+  margin-left: 40px;
+  margin-top: -60px;
+}
+
+section h5 {
+  font-size: 10px;
+  color: #293744;
+  margin-bottom: 4px;
+}
+
+section h6 {
+  margin: 0;
+  font-size: 7px;
+  color: #7F91A5;
+}
+
+section h4 {
+  margin-top: 11px;
+  font-weight: lighter;
+  color: #324154;
+}
+
+.btns {
+  float: right;
+}
+
+select {
+  font-size: 8px;
+  color: #36404A;
+  font-weight: bold;
+  border: 1px solid #CFCED4;
+  border-radius: 2px;
+  height: 20px;
+  width: 84px;
+  background: linear-gradient(#FFFFFF, #FFFFFF 30%, #F4F5F9);
+}
+
+.dash {
+  font-size: 14px;
+  font-weight: bold;
+  color: #C3D0E0;
+  margin: 3px;
+}
+
+.c3-axis .tick line {
+  display: none;
+}
+
+.c3-area {
+  stroke-width: 0;
+  opacity: 0.2;
+  fill: inherit;
+}

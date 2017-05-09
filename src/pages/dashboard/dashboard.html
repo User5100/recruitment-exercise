@@ -3,6 +3,13 @@
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
+
+  TODO - Correct x axis labels - Show month in words
+
+       - Wire up select function to make call to get data
+       - for line chart and donnut chart
+
+       - Correct %'s
 -->
 <ion-header>
 
@@ -18,7 +25,56 @@
 
 <ion-content>
   <!-- Placeholder image to use as a guide. Remove this when you are ready -->
-<img src="/assets/dashboard-design.png" />
 
-   <div id="dashboardChart" #dashboardChart></div>
+  <div class="container">
+    <header>
+      <div class="btns">
+        <select (change)="selectMonthFrom($event.target.value)">
+          <option
+            *ngFor="let month of months;
+            let i=index"
+            >
+            {{month}}
+          </option>
+        </select>
+        <span class="dash">-</span>
+        <select (change)="selectMonthTo($event.target.value)">
+          <option *ngFor="let month of months; let i=index">{{month}}</option>
+        </select>
+      </div>
+
+    </header>
+
+    <section>
+      <div class="income">
+        <h5>Combined Income</h5>
+        <h6>For the selected period from {{from}} to {{to}}</h6>
+        <h4>{{ total | currency:'GBP':true:'1.0-0' }}</h4>
+        <div
+          #lineChart
+          class="line-chart">
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="occupancy">
+        <h5>Combined Occupancy</h5>
+        <h6>For the selected period from {{from}} to {{to}}</h6>
+        <div
+          #donutChart
+          class="donut">
+        </div>
+        <div class="occupancy-list">
+            <div
+              class="item"
+              *ngFor="let client of donutData">{{client[0]}}
+              <span>
+                {{ client[1] | currency:'GBP':true:'1.0-0' }}
+              </span>
+              <h5>{{ (client[1] / total) | percent:'1.1-1' }}</h5></div>
+        </div>
+      </div>
+    </section>
+  </div>
 </ion-content>
